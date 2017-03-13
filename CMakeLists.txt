@@ -3,7 +3,9 @@ project(PocoStudy)
 
 set(CMAKE_CXX_STANDARD 11)
 
+add_subdirectory(Types)
+add_subdirectory(TestLib)
+
 set(SOURCE_FILES main.cpp)
 add_executable(PocoStudy ${SOURCE_FILES})
-
-add_subdirectory(Types)
+#target_link_libraries(PocoStudy cygPocoFoundation.dll)
