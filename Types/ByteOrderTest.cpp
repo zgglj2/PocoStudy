@@ -12,5 +12,7 @@ int main(int argc, char **argv) {
 #endif
     UInt16 port = 80;
     UInt16 networkPort = ByteOrder::toNetwork(port);
+
+    std::cout << std::hex << networkPort << std::endl;
     return 0;
 }

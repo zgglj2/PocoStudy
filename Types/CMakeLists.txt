@@ -4,9 +4,12 @@ project(Types)
 set(CMAKE_CXX_STANDARD 11)
 
 include_directories("../../poco-1.7.8/Foundation/include")
-link_directories("../../poco-1.7.8/cmake-build-release/bin")
+link_directories("../../poco-1.7.8/cmake-build-release/lib")
 
-set(SOURCE_FILES TypesTest.cpp)
-add_executable(Types ${SOURCE_FILES})
+set(SOURCE_FILES ByteOrderTest.cpp)
+add_executable(ByteOrder ${SOURCE_FILES})
 
-#target_link_libraries(Types cygPocoFoundation.dll)
+set(ANY_SOURCE_FILES AnyTest.cpp)
+add_executable(AnyTest ${ANY_SOURCE_FILES})
+
+target_link_libraries(AnyTest PocoFoundation)
