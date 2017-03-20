@@ -1,5 +1,6 @@
 #include "Poco/DynamicAny.h"
 #include <iostream>
+#include <string>
 
 using Poco::DynamicAny;
 
@@ -22,5 +23,10 @@ int main(int argc, char **argv) {
 
     }
 
+    std::string ss = "/var/log/.tect/tect1.log";
+    size_t pos = ss.rfind(".log", ss.npos, 4);
+    std::cout << pos << std::endl;
+    std::cout << ss.find(".log") << std::endl;
+    std::cout << ss.erase(pos, 4) << std::endl;
     return 0;
 }

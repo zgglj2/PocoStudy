@@ -4,6 +4,8 @@ project(PocoStudy)
 set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(Types)
+#add_subdirectory(Exception)
+add_subdirectory(Files)
 add_subdirectory(TestLib)
 
 set(SOURCE_FILES main.cpp)
