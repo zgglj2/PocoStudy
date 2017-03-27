@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(Types)
 add_subdirectory(ExceptionAndDebug)
+add_subdirectory(Memory)
 add_subdirectory(Files)
 add_subdirectory(TestLib)
 
