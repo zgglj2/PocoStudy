@@ -13,3 +13,11 @@ target_link_libraries(AutoPtrTest PocoFoundation)
 set(RCO_SOURCE_FILES RefCountedObjectTest.cpp)
 add_executable(RefCountedObjectTest ${RCO_SOURCE_FILES})
 target_link_libraries(RefCountedObjectTest PocoFoundation)
+
+set(ARP_SOURCE_FILES AutoReleasePoolTest.cpp)
+add_executable(AutoReleasePoolTest ${ARP_SOURCE_FILES})
+target_link_libraries(AutoReleasePoolTest PocoFoundation)
+
+set(SHAREDPTR_SOURCE_FILES SharedPtrTest.cpp)
+add_executable(SharedPtrTest ${SHAREDPTR_SOURCE_FILES})
+target_link_libraries(SharedPtrTest PocoFoundation)
