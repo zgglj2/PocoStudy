@@ -37,3 +37,7 @@ target_link_libraries(StringTokenizerTest PocoFoundation)
 set(RE_SOURCE_FILES RegularExpressionTest.cpp)
 add_executable(RegularExpressionTest ${RE_SOURCE_FILES})
 target_link_libraries(RegularExpressionTest PocoFoundation)
+
+set(TEXTCONVERTER_SOURCE_FILES TextConverterTest.cpp)
+add_executable(TextConverterTest ${TEXTCONVERTER_SOURCE_FILES})
+target_link_libraries(TextConverterTest PocoFoundation)
