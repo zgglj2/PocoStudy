@@ -21,3 +21,15 @@ target_link_libraries(AutoReleasePoolTest PocoFoundation)
 set(SHAREDPTR_SOURCE_FILES SharedPtrTest.cpp)
 add_executable(SharedPtrTest ${SHAREDPTR_SOURCE_FILES})
 target_link_libraries(SharedPtrTest PocoFoundation)
+
+set(SHAREDPTRARRAY_SOURCE_FILES SharedPtrArraysTest.cpp)
+add_executable(SharedPtrArraysTest ${SHAREDPTRARRAY_SOURCE_FILES})
+target_link_libraries(SharedPtrArraysTest PocoFoundation)
+
+set(BUFFER_SOURCE_FILES BufferTest.cpp)
+add_executable(BufferTest ${BUFFER_SOURCE_FILES})
+target_link_libraries(BufferTest PocoFoundation)
+
+set(SINGLETON_SOURCE_FILES SingletonTest.cpp)
+add_executable(SingletonTest ${SINGLETON_SOURCE_FILES})
+target_link_libraries(SingletonTest PocoFoundation)
