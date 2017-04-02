@@ -21,3 +21,19 @@ target_link_libraries(ReplaceTest PocoFoundation)
 set(CAT_SOURCE_FILES CatTest.cpp)
 add_executable(CatTest ${CAT_SOURCE_FILES})
 target_link_libraries(CatTest PocoFoundation)
+
+set(NUMFMT_SOURCE_FILES NumberFormatterTest.cpp)
+add_executable(NumberFormatterTest ${NUMFMT_SOURCE_FILES})
+target_link_libraries(NumberFormatterTest PocoFoundation)
+
+set(FMT_SOURCE_FILES FormatTest.cpp)
+add_executable(FormatTest ${FMT_SOURCE_FILES})
+target_link_libraries(FormatTest PocoFoundation)
+
+set(STRINGTOKEN_SOURCE_FILES StringTokenizerTest.cpp)
+add_executable(StringTokenizerTest ${STRINGTOKEN_SOURCE_FILES})
+target_link_libraries(StringTokenizerTest PocoFoundation)
+
+set(RE_SOURCE_FILES RegularExpressionTest.cpp)
+add_executable(RegularExpressionTest ${RE_SOURCE_FILES})
+target_link_libraries(RegularExpressionTest PocoFoundation)
