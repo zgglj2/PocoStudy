@@ -9,14 +9,14 @@ public:
     ~MySingleton(){
 
     }
-    static MySingleton& instance(){
+    static MySingleton* instance(){
         static Poco::SingletonHolder<MySingleton> sh;
-        return *sh.get();
+        return sh.get();
     }
 };
 
 int main(int argc, char **argv) {
-    MySingleton& instance = MySingleton::instance();
+    MySingleton* instance = MySingleton::instance();
 
     return 0;
 }
