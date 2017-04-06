@@ -1,20 +1,26 @@
 #include <iostream>
-#include "Poco/Environment.h"
+#include <Poco/HMACEngine.h>
+#include <Poco/DigestEngine.h>
+#include <Poco/SHA1Engine.h>
 
 using namespace std;
-using Poco::Environment;
+using Poco::HMACEngine;
+using Poco::DigestEngine;
+using Poco::SHA1Engine;
 
 int main(int argc, char **argv) {
-    cout << "OS Name:" << Environment::osName() <<endl;
-    cout << "OS Version:" << Environment::osVersion() <<endl;
-    cout << "OS Arch:" << Environment::osArchitecture() <<endl;
-    cout << "Node Name:" << Environment::nodeName() <<endl;
-    cout << "Node ID:" << Environment::nodeId() <<endl;
+    string message1("This is a top-secret message.");
+    string message2("Don't tell anyone!");
+    string passphrase("s3cr3t");
 
-    if (Environment::has("HOME")) {
-        cout << "Home:" << Environment::get("HOME") << endl;
-    }
-    Environment::set("POCO", "foo");
-    cout << "POCO:" << Environment::get("POCO") << endl;
+    HMACEngine<SHA1Engine> hmac(passphrase);
+    hmac.update(message1);
+    hmac.update(message2);
+
+    const DigestEngine::Digest& digist = hmac.digest();
+    string digistString(DigestEngine::digestToHex(digist));
+
+    cout << digistString << endl;
+
     return 0;
 }
