@@ -1,12 +1,18 @@
 #include <iostream>
-#include <Poco/HMACEngine.h>
 #include <Poco/DigestEngine.h>
+#include <Poco/HMACEngine.h>
 #include <Poco/SHA1Engine.h>
+#include <Poco/DigestStream.h>
+#include <Poco/MD5Engine.h>
 
 using namespace std;
 using Poco::HMACEngine;
 using Poco::DigestEngine;
 using Poco::SHA1Engine;
+
+using Poco::DigestOutputStream;
+using Poco::MD5Engine;
+
 
 int main(int argc, char **argv) {
     string message1("This is a top-secret message.");
@@ -19,8 +25,16 @@ int main(int argc, char **argv) {
 
     const DigestEngine::Digest& digist = hmac.digest();
     string digistString(DigestEngine::digestToHex(digist));
-
     cout << digistString << endl;
 
+    MD5Engine md5;
+    DigestOutputStream ostr(md5);
+
+    ostr << "This is some text";
+    ostr.flush();
+
+    const DigestEngine::Digest& md5digist = md5.digest();
+    string md5digistString(DigestEngine::digestToHex(md5digist));
+    cout << md5digistString << endl;
     return 0;
 }
