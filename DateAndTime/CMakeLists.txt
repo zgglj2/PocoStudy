@@ -10,4 +10,8 @@ set(TIMESTAMP_SOURCE_FILES TimeStampTest.cpp)
 add_executable(TimeStampTest ${TIMESTAMP_SOURCE_FILES})
 target_link_libraries(TimeStampTest PocoFoundation)
 
+set(DATETIME_SOURCE_FILES DateTimeTest.cpp)
+add_executable(DateTimeTest ${DATETIME_SOURCE_FILES})
+target_link_libraries(DateTimeTest PocoFoundation)
+
 
