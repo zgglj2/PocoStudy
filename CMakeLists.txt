@@ -12,7 +12,7 @@ add_subdirectory(RandomCrypto)
 add_subdirectory(DateAndTime)
 add_subdirectory(Files)
 add_subdirectory(TestLib)
-add_subdirectory(Curl)
+#add_subdirectory(Curl)
 
 set(SOURCE_FILES main.cpp)
 add_executable(PocoStudy ${SOURCE_FILES})
