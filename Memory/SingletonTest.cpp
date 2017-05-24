@@ -16,7 +16,9 @@ public:
 };
 
 int main(int argc, char **argv) {
-    MySingleton* instance = MySingleton::instance();
+    MySingleton* instance1 = MySingleton::instance();
+    MySingleton* instance2 = MySingleton::instance();
 
+    std::cout << "instance1:" << instance1 << ", instance2:" << instance2 << std::endl;
     return 0;
 }
