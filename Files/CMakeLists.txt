@@ -9,5 +9,8 @@ link_directories("../../poco-1.7.8/cmake-build-release/bin")
 
 set(SOURCE_FILES FilesTest.cpp)
 add_executable(Files ${SOURCE_FILES})
-
 target_link_libraries(Files PocoFoundation)
+
+set(SOURCE_FILES GlobTest.cpp)
+add_executable(GlobTest ${SOURCE_FILES})
+target_link_libraries(GlobTest PocoFoundation)
