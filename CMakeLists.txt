@@ -17,6 +17,7 @@ add_subdirectory(DateAndTime)
 add_subdirectory(Files)
 add_subdirectory(TestLib)
 add_subdirectory(SharedLibraries)
+add_subdirectory(Configuration)
 #add_subdirectory(Curl)
 
 set(SOURCE_FILES main.cpp)
