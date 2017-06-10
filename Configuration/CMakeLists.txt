@@ -19,3 +19,7 @@ target_link_libraries(INIConfigurationTest PocoFoundation PocoUtil)
 set(PROPERTY_SOURCE_FILES PropertyConfigurationTest.cpp)
 add_executable(PropertyConfigurationTest ${PROPERTY_SOURCE_FILES})
 target_link_libraries(PropertyConfigurationTest PocoFoundation PocoUtil)
+
+set(MAP_SOURCE_FILES MapConfigurationTest.cpp)
+add_executable(MapConfigurationTest ${MAP_SOURCE_FILES})
+target_link_libraries(MapConfigurationTest PocoFoundation PocoUtil)
