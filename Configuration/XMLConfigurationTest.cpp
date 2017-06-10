@@ -1,5 +1,4 @@
 #include "Poco/Util/XMLConfiguration.h"
-#include "Poco/AutoPtr.h"
 #include <iostream>
 #include <fstream>
 
@@ -27,6 +26,7 @@ int main(int argc, char **argv) {
         prop4 = pConf->getString("prop3.prop4[1][@attr]");
         std::cout << "prop4[1][@attr]: " << prop4 << std::endl;
 
+        pConf->setString("prop5[1].test1.test2.test3[@attr]", "value5");
         pConf->save("../../Configuration/test2.xml");
     } catch (Poco::Exception &exp) {
         std::cout << exp.displayText() << std::endl;

@@ -11,3 +11,11 @@ link_directories("../../poco-1.7.8/cmake-build-release/lib")
 set(XML_SOURCE_FILES XMLConfigurationTest.cpp)
 add_executable(XMLConfigurationTest ${XML_SOURCE_FILES})
 target_link_libraries(XMLConfigurationTest PocoFoundation PocoUtil)
+
+set(INI_SOURCE_FILES INIConfigurationTest.cpp)
+add_executable(INIConfigurationTest ${INI_SOURCE_FILES})
+target_link_libraries(INIConfigurationTest PocoFoundation PocoUtil)
+
+set(PROPERTY_SOURCE_FILES PropertyConfigurationTest.cpp)
+add_executable(PropertyConfigurationTest ${PROPERTY_SOURCE_FILES})
+target_link_libraries(PropertyConfigurationTest PocoFoundation PocoUtil)

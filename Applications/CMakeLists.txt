@@ -11,5 +11,9 @@ set(APPLICATION_SOURCE_FILES ApplicationTest.cpp)
 add_executable(ApplicationTest ${APPLICATION_SOURCE_FILES})
 target_link_libraries(ApplicationTest PocoFoundation PocoUtil)
 
+set(SAMPLEAPPP_SOURCE_FILES SampleApp.cpp)
+add_executable(SampleApp ${SAMPLEAPPP_SOURCE_FILES})
+target_link_libraries(SampleApp PocoFoundation PocoUtil)
+
 
 
