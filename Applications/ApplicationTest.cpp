@@ -3,6 +3,7 @@
 #include "Poco/Task.h"
 #include "Poco/TaskManager.h"
 #include "Poco/DateTimeFormatter.h"
+#include <Poco/Util/IntValidator.h>
 #include <iostream>
 
 using Poco::Util::Application;
@@ -11,6 +12,7 @@ using Poco::Util::Option;
 using Poco::Util::OptionSet;
 using Poco::Util::OptionCallback;
 using Poco::Util::HelpFormatter;
+using Poco::Util::IntValidator;
 using Poco::Task;
 using Poco::TaskManager;
 using Poco::DateTimeFormatter;
@@ -82,6 +84,14 @@ protected:
                         .repeatable(true)
                         .argument("file")
                         .callback(OptionCallback<MyServerApp>(this, &MyServerApp::handleConfig)));
+
+        options.addOption(
+                Option("bind", "b", "bind option value to test.property")
+                        .required(false)
+                        .repeatable(false)
+                        .argument("value")
+                        .validator(new IntValidator(0, 100))
+                        .binding("test.properties"));
     }
 
     void handleHelp(const std::string& name, const std::string& value)
