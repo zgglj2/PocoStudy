@@ -18,6 +18,7 @@ add_subdirectory(Files)
 add_subdirectory(TestLib)
 add_subdirectory(SharedLibraries)
 add_subdirectory(Configuration)
+add_subdirectory(LoggingConfiguration)
 add_subdirectory(Applications)
 #add_subdirectory(Curl)
 
