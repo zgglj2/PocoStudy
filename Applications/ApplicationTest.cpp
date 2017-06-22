@@ -1,111 +1,141 @@
-#include "Poco/Util/Application.h"
+#include "Poco/Util/ServerApplication.h"
 #include "Poco/Util/HelpFormatter.h"
+#include "Poco/Task.h"
+#include "Poco/TaskManager.h"
+#include "Poco/DateTimeFormatter.h"
 #include <iostream>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <stdio.h>
+
+using Poco::Util::Application;
+using Poco::Util::ServerApplication;
+using Poco::Util::Option;
+using Poco::Util::OptionSet;
+using Poco::Util::OptionCallback;
+using Poco::Util::HelpFormatter;
+using Poco::Task;
+using Poco::TaskManager;
+using Poco::DateTimeFormatter;
 
 
-using namespace Poco;
-
-class MyApplication : public Util::Application {
+class MyTask: public Task
+{
 public:
-    MyApplication() {
-        m_helpRequested = false;
+    MyTask(): Task("SampleTask")
+    {
     }
 
-    void initialize(Application &self);
-
-    void uninitialize();
-
-    void defineOptions(Util::OptionSet &options);
-
-    void handleHelp(const std::string &name, const std::string &value);
-
-    void handleDaemon(const std::string &name, const std::string &value);
-
-    int main(const std::vector<std::string> &args);
-
-private:
-    bool m_helpRequested;//如果传参数进来那么此变量变为 true 在main() 方法就不要做其他的事情直接退出。
-    void beDaemon();
+    void runTask()
+    {
+        Application& app = Application::instance();
+        while (!sleep(5000))
+        {
+            Application::instance().logger().information("busy doing nothing... " + DateTimeFormatter::format(app.uptime()));
+        }
+    }
 };
 
-void MyApplication::initialize(Application &self) {
-    Util::Application::initialize(self);//帮我们初始化子系统，必须显示的调用。
-    std::cout << "this is initialize\n";
-}
 
-void MyApplication::uninitialize() {
-    Util::Application::uninitialize();//帮我们关闭子系统，必须显示的调用。
-    std::cout << "this is uninitialize\n";
-}
+class MyServerApp: public ServerApplication
+{
+public:
+    MyServerApp(): _helpRequested(false)
+    {
+    }
 
-void MyApplication::defineOptions(Util::OptionSet &options) {
-    Util::Application::defineOptions(options);//必须调用
-    std::cout << "defineOptions被调用" << std::endl;
-    options.addOption(
-            Util::Option("help", "h",
-                         "display help information on command line arguments")
-                    .required(false)
-                    .repeatable(false)
-                    .callback(Util::OptionCallback<MyApplication>(this, &MyApplication::handleHelp)));
-    options.addOption(
-            Util::Option("daemon", "", "Run application as a daemon.")
-                    .required(false)
-                    .repeatable(false)
-                    .callback(Util::OptionCallback<MyApplication>(this, &MyApplication::handleDaemon)));
-}
+    ~MyServerApp()
+    {
+    }
 
-void MyApplication::handleHelp(const std::string &name, const std::string &value) {
-    m_helpRequested = true;
-    Poco::Util::HelpFormatter helpFormatter(options());
-    helpFormatter.format(std::cout);
-}
+protected:
+    void initialize(Application& self)
+    {
+        loadConfiguration(); // load default configuration files, if present
+        ServerApplication::initialize(self);
+//        logger().information("starting up");
+    }
 
+    void uninitialize()
+    {
+//        logger().information("shutting down");
+        ServerApplication::uninitialize();
+    }
 
-void MyApplication::handleDaemon(const std::string &name, const std::string &value) {
-    beDaemon();
-}
+    void defineOptions(OptionSet& options)
+    {
+        ServerApplication::defineOptions(options);
 
-void MyApplication::beDaemon() {
-    pid_t pid;
-    if ((pid = fork()) < 0)
-        throw SystemException("cannot fork daemon process");
-    else if (pid != 0)
-        exit(0);
+        options.addOption(
+                Option("help", "h", "display help information on command line arguments")
+                        .required(false)
+                        .repeatable(false)
+                        .callback(OptionCallback<MyServerApp>(this, &MyServerApp::handleHelp)));
 
-    setsid();
-    umask(0);
+        options.addOption(
+                Option("define", "D", "define a configuration property")
+                        .required(false)
+                        .repeatable(true)
+                        .argument("name=value")
+                        .callback(OptionCallback<MyServerApp>(this, &MyServerApp::handleDefine)));
 
-    FILE *fin = freopen("/dev/null", "r+", stdin);
-    if (!fin) throw Poco::OpenFileException("Cannot attach stdin to /dev/null");
-    FILE *fout = freopen("/dev/null", "r+", stdout);
-    if (!fout) throw Poco::OpenFileException("Cannot attach stdout to /dev/null");
-    FILE *ferr = freopen("/dev/null", "r+", stderr);
-    if (!ferr) throw Poco::OpenFileException("Cannot attach stderr to /dev/null");
-}
+        options.addOption(
+                Option("config-file", "f", "load configuration data from a file")
+                        .required(false)
+                        .repeatable(true)
+                        .argument("file")
+                        .callback(OptionCallback<MyServerApp>(this, &MyServerApp::handleConfig)));
+    }
 
+    void handleHelp(const std::string& name, const std::string& value)
+    {
+        _helpRequested = true;
+        displayHelp();
+        stopOptionsProcessing();
+    }
 
-int MyApplication::main(const std::vector<std::string> &args) {
-    if (!m_helpRequested) {
-        std::cout << "this is main no help\n";
-        while (1) {
-            std::cout << "hello world" << std::endl;
-            sleep(3);
+    void displayHelp()
+    {
+        HelpFormatter helpFormatter(options());
+        helpFormatter.setCommand(commandName());
+        helpFormatter.setUsage("OPTIONS");
+        helpFormatter.setHeader("My server application that demonstrates some of the features of the Util::ServerApplication class.");
+        helpFormatter.format(std::cout);
+    }
+
+    void defineProperty(const std::string &def) {
+        std::string name;
+        std::string value;
+        std::string::size_type pos = def.find('=');
+        if (pos != std::string::npos) {
+            name.assign(def, 0, pos);
+            value.assign(def, pos + 1, def.length() - pos);
+        } else
+            name = def;
+        config().setString(name, value);
+    }
+
+    void handleDefine(const std::string &name, const std::string &value) {
+        defineProperty(value);
+    }
+
+    void handleConfig(const std::string &name, const std::string &value) {
+        loadConfiguration(value);
+    }
+
+    int main(const ArgVec& args)
+    {
+        if (!_helpRequested)
+        {
+            TaskManager tm;
+            tm.start(new MyTask);
+            waitForTerminationRequest();
+            tm.cancelAll();
+            tm.joinAll();
         }
-    } else {
-        std::cout << "this is main call help\n";
+        return Application::EXIT_OK;
     }
-    return EXIT_OK;
-}
 
-int main(int argc, char **argv) {
-    try {
-        MyApplication app;
-        app.init(argc, argv);//在这里传主函数参数。
-        app.run();
-    } catch (Poco::Exception &e) {
-        std::cerr << "some error:  " << e.what() << std::endl;
-    }
-}
+private:
+    bool _helpRequested;
+};
+
+
+POCO_SERVER_MAIN(MyServerApp)

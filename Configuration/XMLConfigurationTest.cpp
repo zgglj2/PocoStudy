@@ -25,6 +25,8 @@ int main(int argc, char **argv) {
         std::cout << "prop4[0][@attr]: " << prop4 << std::endl;
         prop4 = pConf->getString("prop3.prop4[1][@attr]");
         std::cout << "prop4[1][@attr]: " << prop4 << std::endl;
+        std::cout << "pConf->has(\"prop3.prop4[2]\"): " << pConf->has("prop3.prop4[2]") << std::endl;
+
 
         pConf->setString("prop5[1].test1.test2.test3[@attr]", "value5");
         pConf->save("../../Configuration/test2.xml");

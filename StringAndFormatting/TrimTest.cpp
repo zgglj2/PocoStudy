@@ -14,6 +14,9 @@ int main(int argc, char **argv) {
     std::cout << "s1:" << s1 << std::endl;
     std::string s2(trim(hello));
     std::cout << "s2:" << s2 << std::endl;
-
+    std::string ss(s2);
+    ss.resize(ss.size()-1);
+    ss.erase(0, 1);
+    std::cout << "ss:" << ss << std::endl;
     return 0;
 }
