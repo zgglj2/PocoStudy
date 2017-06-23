@@ -41,3 +41,7 @@ target_link_libraries(RegularExpressionTest PocoFoundation)
 set(TEXTCONVERTER_SOURCE_FILES TextConverterTest.cpp)
 add_executable(TextConverterTest ${TEXTCONVERTER_SOURCE_FILES})
 target_link_libraries(TextConverterTest PocoFoundation)
+
+set(NUMBERPARSER_SOURCE_FILES NumberParserTest.cpp)
+add_executable(NumberParserTest ${NUMBERPARSER_SOURCE_FILES})
+target_link_libraries(NumberParserTest PocoFoundation)
