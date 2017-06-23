@@ -33,3 +33,7 @@ target_link_libraries(BufferTest PocoFoundation)
 set(SINGLETON_SOURCE_FILES SingletonTest.cpp)
 add_executable(SingletonTest ${SINGLETON_SOURCE_FILES})
 target_link_libraries(SingletonTest PocoFoundation)
+
+set(MEMPOOL_SOURCE_FILES MemoryPoolTest.cpp)
+add_executable(MemoryPoolTest ${MEMPOOL_SOURCE_FILES})
+target_link_libraries(MemoryPoolTest PocoFoundation)
