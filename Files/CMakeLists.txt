@@ -12,8 +12,8 @@ add_executable(PathTest ${SOURCE_FILES})
 target_link_libraries(PathTest PocoFoundation)
 
 set(SOURCE_FILES FilesTest.cpp)
-add_executable(Files ${SOURCE_FILES})
-target_link_libraries(Files PocoFoundation)
+add_executable(FilesTest ${SOURCE_FILES})
+target_link_libraries(FilesTest PocoFoundation)
 
 set(SOURCE_FILES DirectoryIteratorTest.cpp)
 add_executable(DirectoryIteratorTest ${SOURCE_FILES})
