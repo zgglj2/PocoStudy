@@ -1,8 +1,12 @@
 #include <iostream>
 #include <Poco/LocalDateTime.h>
+#include "Poco/DateTimeFormatter.h"
+#include "Poco/DateTimeFormat.h"
 
 using namespace std;
 using Poco::LocalDateTime;
+using Poco::DateTimeFormatter;
+using Poco::DateTimeFormat;
 
 int main(int argc, char **argv) {
     LocalDateTime now;
@@ -35,6 +39,10 @@ int main(int argc, char **argv) {
 
     Poco::Timestamp ts = now.timestamp();
     cout << ts.epochTime() << endl;
+    cout << time(NULL) << endl;
+
+    std::string s = DateTimeFormatter::format(ts, DateTimeFormat::SORTABLE_FORMAT);
+    cout << s << endl;
 
     LocalDateTime dt(1973, 9, 12, 2, 30, 45);
     dt.assign(2006, 10, 13, 13, 45, 12, 345);

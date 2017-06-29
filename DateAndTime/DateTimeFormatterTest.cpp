@@ -4,10 +4,12 @@
 #include "Poco/DateTimeFormatter.h"
 #include "Poco/DateTimeFormat.h"
 #include <iostream>
+#include "Poco/Timezone.h"
 
 using Poco::DateTimeFormatter;
 using Poco::DateTimeFormat;
 using Poco::Timestamp;
+using Poco::Timezone;
 using namespace std;
 
 int main(int argc, char **argv) {
@@ -25,7 +27,7 @@ int main(int argc, char **argv) {
     // "5 days, 11 hours, 33 minutes"
 
 
-    s = DateTimeFormatter::format(Timestamp::fromEpochTime(time(NULL)), DateTimeFormat::SORTABLE_FORMAT);
+    s = DateTimeFormatter::format(Timestamp::fromEpochTime(time(NULL) + Timezone::utcOffset()), DateTimeFormat::SORTABLE_FORMAT);
     cout << s << endl;
     return 0;
 }
