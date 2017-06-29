@@ -7,6 +7,9 @@ using Poco::TemporaryFile;
 
 int main(int argc, char** argv)
 {
+    TemporaryFile tmp;
+    std::cout << tmp.path() << std::endl;
+
     std::string value = "./test.tmp";
     Poco::FileOutputStream ostr(value);
     if (ostr.good())

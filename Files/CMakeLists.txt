@@ -7,9 +7,17 @@ include_directories("../../poco-1.7.8/Foundation/include")
 link_directories("../../poco-1.7.8/cmake-build-release/lib")
 link_directories("../../poco-1.7.8/cmake-build-release/bin")
 
+set(SOURCE_FILES PathTest.cpp)
+add_executable(PathTest ${SOURCE_FILES})
+target_link_libraries(PathTest PocoFoundation)
+
 set(SOURCE_FILES FilesTest.cpp)
 add_executable(Files ${SOURCE_FILES})
 target_link_libraries(Files PocoFoundation)
+
+set(SOURCE_FILES DirectoryIteratorTest.cpp)
+add_executable(DirectoryIteratorTest ${SOURCE_FILES})
+target_link_libraries(DirectoryIteratorTest PocoFoundation)
 
 set(SOURCE_FILES GlobTest.cpp)
 add_executable(GlobTest ${SOURCE_FILES})
