@@ -36,5 +36,15 @@ int main(int argc, char **argv) {
     const DigestEngine::Digest& md5digist = md5.digest();
     string md5digistString(DigestEngine::digestToHex(md5digist));
     cout << md5digistString << endl;
+
+    SHA1Engine sha1;
+    DigestOutputStream ostr2(sha1);
+
+    ostr2 << "This is some text";
+    ostr2.flush();
+
+    const DigestEngine::Digest& sha1digist = sha1.digest();
+    string sha1digistString(DigestEngine::digestToHex(sha1digist));
+    cout << sha1digistString << endl;
     return 0;
 }

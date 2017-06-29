@@ -7,6 +7,7 @@
 
 using Poco::DateTimeFormatter;
 using Poco::DateTimeFormat;
+using Poco::Timestamp;
 using namespace std;
 
 int main(int argc, char **argv) {
@@ -22,5 +23,9 @@ int main(int argc, char **argv) {
     s = DateTimeFormatter::format(span, "%d days, %H hours, %M minutes");
     cout << s << endl;
     // "5 days, 11 hours, 33 minutes"
+
+
+    s = DateTimeFormatter::format(Timestamp::fromEpochTime(time(NULL)), DateTimeFormat::SORTABLE_FORMAT);
+    cout << s << endl;
     return 0;
 }
