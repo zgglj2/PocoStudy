@@ -37,6 +37,8 @@ int main(int argc, char **argv) {
     source.theEvent += Poco::delegate(&target, &Target::onEvent);
     source.theEvent += Poco::delegate(&otherTarget, &OtherTarget::onEvent);
     source.fireEvent(100);
+    int ev = 101;
+    source.theEvent.notify(&source.theEvent, ev);
     source.theEvent -= Poco::delegate(&target, &Target::onEvent);
     source.theEvent -= Poco::delegate(&otherTarget, &OtherTarget::onEvent);
 
