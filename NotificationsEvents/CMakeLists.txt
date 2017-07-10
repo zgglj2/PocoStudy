@@ -14,3 +14,7 @@ set(SOURCE_FILES NotificationQueueTest.cpp)
 add_executable(NotificationQueueTest ${SOURCE_FILES})
 target_link_libraries(NotificationQueueTest PocoFoundation)
 
+set(SOURCE_FILES EventsTest.cpp)
+add_executable(EventsTest ${SOURCE_FILES})
+target_link_libraries(EventsTest PocoFoundation)
+
