@@ -13,3 +13,7 @@ target_link_libraries(EncodeAndDecodeTest PocoFoundation)
 set(SOURCE_FILES ZlibTest.cpp)
 add_executable(ZlibTest ${SOURCE_FILES})
 target_link_libraries(ZlibTest PocoFoundation)
+
+set(SOURCE_FILES CountingTest.cpp)
+add_executable(CountingTest ${SOURCE_FILES})
+target_link_libraries(CountingTest PocoFoundation)
