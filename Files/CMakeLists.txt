@@ -26,3 +26,7 @@ target_link_libraries(GlobTest PocoFoundation)
 set(SOURCE_FILES TemporaryFileTest.cpp)
 add_executable(TemporaryFileTest ${SOURCE_FILES})
 target_link_libraries(TemporaryFileTest PocoFoundation)
+
+set(SOURCE_FILES FileLockTest.cpp)
+add_executable(FileLockTest ${SOURCE_FILES})
+target_link_libraries(FileLockTest PocoFoundation)
