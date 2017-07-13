@@ -10,3 +10,19 @@ set(SOURCE_FILES LoggerTest.cpp)
 add_executable(LoggerTest ${SOURCE_FILES})
 target_link_libraries(LoggerTest PocoFoundation)
 
+set(SOURCE_FILES SimpleFileChannelTest.cpp)
+add_executable(SimpleFileChannelTest ${SOURCE_FILES})
+target_link_libraries(SimpleFileChannelTest PocoFoundation)
+
+set(SOURCE_FILES FileChannelTest.cpp)
+add_executable(FileChannelTest ${SOURCE_FILES})
+target_link_libraries(FileChannelTest PocoFoundation)
+
+set(SOURCE_FILES AsyncChannelTest.cpp)
+add_executable(AsyncChannelTest ${SOURCE_FILES})
+target_link_libraries(AsyncChannelTest PocoFoundation)
+
+set(SOURCE_FILES SpltterChannelTest.cpp)
+add_executable(SpltterChannelTest ${SOURCE_FILES})
+target_link_libraries(SpltterChannelTest PocoFoundation)
+

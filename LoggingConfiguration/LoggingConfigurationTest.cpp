@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
     Poco::Util::LoggingConfigurator log_configurator;
     log_configurator.configure(pConf);
 
-    Logger &logger = Logger::root();
+    Logger &logger = Logger::get("Test");
     logger.information("This is an informational message");
     logger.warning("This is a warning message");
     sleep(5);
