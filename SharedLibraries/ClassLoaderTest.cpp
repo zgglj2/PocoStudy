@@ -38,9 +38,9 @@ int main(int argc, char **argv) {
         }
     }
 
-    AbstractPlugin* pluginA = loader.create("PluginA");
-    AbstractPlugin* pluginB = loader.create("PluginB");
-    AbstractPlugin& pluginC = loader.instance("PluginC");
+    AbstractPlugin *pluginA = loader.create("PluginA");
+    AbstractPlugin *pluginB = loader.create("PluginB");
+    AbstractPlugin &pluginC = loader.instance("PluginC");
     std::cout << "pluginA name:" << pluginA->name() << std::endl;
     std::cout << "pluginB name:" << pluginB->name() << std::endl;
     std::cout << "pluginC name:" << pluginC.name() << std::endl;

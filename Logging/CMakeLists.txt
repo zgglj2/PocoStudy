@@ -26,3 +26,11 @@ set(SOURCE_FILES SpltterChannelTest.cpp)
 add_executable(SpltterChannelTest ${SOURCE_FILES})
 target_link_libraries(SpltterChannelTest PocoFoundation)
 
+set(SOURCE_FILES LogStreamTest.cpp)
+add_executable(LogStreamTest ${SOURCE_FILES})
+target_link_libraries(LogStreamTest PocoFoundation)
+
+set(SOURCE_FILES FormattingChannelTest.cpp)
+add_executable(FormattingChannelTest ${SOURCE_FILES})
+target_link_libraries(FormattingChannelTest PocoFoundation)
+

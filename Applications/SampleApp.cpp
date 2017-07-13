@@ -135,6 +135,18 @@ protected:
             }
             logger().information("Application properties:");
             printProperties("");
+
+
+            for (int i = 0; i < 100; ++i)
+                logger().information("Testing FileChannel");
+            Poco::Thread::sleep(1000);
+            for (int i = 0; i < 100; ++i)
+                logger().information("Testing FileChannel");
+            Poco::Thread::sleep(1000);
+
+            for (int i = 0; i < 100; ++i)
+                logger().information("Testing FileChannel");
+            Poco::Thread::sleep(10000);
         }
         return Application::EXIT_OK;
     }

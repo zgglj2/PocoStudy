@@ -9,9 +9,9 @@ link_directories("../../poco-1.7.8/cmake-build-release/lib")
 set(SOURCE_FILES TestLibrary.cpp)
 add_library(TestLibrary SHARED ${SOURCE_FILES})
 
-set(ENV_SOURCE_FILES LibraryLoaderTest.cpp)
-add_executable(LibraryLoaderTest ${ENV_SOURCE_FILES})
-target_link_libraries(LibraryLoaderTest PocoFoundation)
+set(ENV_SOURCE_FILES SharedLibraryTest.cpp)
+add_executable(SharedLibraryTest ${ENV_SOURCE_FILES})
+target_link_libraries(SharedLibraryTest PocoFoundation)
 
 set(SOURCE_FILES AbstractPlugin.cpp)
 add_library(AbstractPlugin SHARED ${SOURCE_FILES})
