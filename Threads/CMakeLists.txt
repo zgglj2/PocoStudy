@@ -22,4 +22,16 @@ set(SOURCE_FILES ErrorHandlerTest.cpp)
 add_executable(ErrorHandlerTest ${SOURCE_FILES})
 target_link_libraries(ErrorHandlerTest PocoFoundation)
 
+set(SOURCE_FILES MutexTest.cpp)
+add_executable(MutexTest ${SOURCE_FILES})
+target_link_libraries(MutexTest PocoFoundation)
+
+set(SOURCE_FILES FastMutexTest.cpp)
+add_executable(FastMutexTest ${SOURCE_FILES})
+target_link_libraries(FastMutexTest PocoFoundation)
+
+set(SOURCE_FILES ScopeLockTest.cpp)
+add_executable(ScopeLockTest ${SOURCE_FILES})
+target_link_libraries(ScopeLockTest PocoFoundation)
+
 
