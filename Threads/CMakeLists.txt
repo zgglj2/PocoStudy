@@ -18,4 +18,8 @@ set(SOURCE_FILES ThreadLocalTest.cpp)
 add_executable(ThreadLocalTest ${SOURCE_FILES})
 target_link_libraries(ThreadLocalTest PocoFoundation)
 
+set(SOURCE_FILES ErrorHandlerTest.cpp)
+add_executable(ErrorHandlerTest ${SOURCE_FILES})
+target_link_libraries(ErrorHandlerTest PocoFoundation)
+
 
