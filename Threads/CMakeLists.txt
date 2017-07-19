@@ -34,4 +34,36 @@ set(SOURCE_FILES ScopeLockTest.cpp)
 add_executable(ScopeLockTest ${SOURCE_FILES})
 target_link_libraries(ScopeLockTest PocoFoundation)
 
+set(SOURCE_FILES ConditionTest.cpp)
+add_executable(ConditionTest ${SOURCE_FILES})
+target_link_libraries(ConditionTest PocoFoundation)
+
+set(SOURCE_FILES EventTest.cpp)
+add_executable(EventTest ${SOURCE_FILES})
+target_link_libraries(EventTest PocoFoundation)
+
+set(SOURCE_FILES SemaphoreTest.cpp)
+add_executable(SemaphoreTest ${SOURCE_FILES})
+target_link_libraries(SemaphoreTest PocoFoundation)
+
+set(SOURCE_FILES RWLockTest.cpp)
+add_executable(RWLockTest ${SOURCE_FILES})
+target_link_libraries(RWLockTest PocoFoundation)
+
+set(SOURCE_FILES TimerTest.cpp)
+add_executable(TimerTest ${SOURCE_FILES})
+target_link_libraries(TimerTest PocoFoundation)
+
+set(SOURCE_FILES TaskManagerTest.cpp)
+add_executable(TaskManagerTest ${SOURCE_FILES})
+target_link_libraries(TaskManagerTest PocoFoundation)
+
+set(SOURCE_FILES ActivityTest.cpp)
+add_executable(ActivityTest ${SOURCE_FILES})
+target_link_libraries(ActivityTest PocoFoundation)
+
+set(SOURCE_FILES ActiveMethodTest.cpp)
+add_executable(ActiveMethodTest ${SOURCE_FILES})
+target_link_libraries(ActiveMethodTest PocoFoundation)
+
 
