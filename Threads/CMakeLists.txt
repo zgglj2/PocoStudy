@@ -66,4 +66,8 @@ set(SOURCE_FILES ActiveMethodTest.cpp)
 add_executable(ActiveMethodTest ${SOURCE_FILES})
 target_link_libraries(ActiveMethodTest PocoFoundation)
 
+set(SOURCE_FILES ActiveDispatcherTest.cpp)
+add_executable(ActiveDispatcherTest ${SOURCE_FILES})
+target_link_libraries(ActiveDispatcherTest PocoFoundation)
+
 
