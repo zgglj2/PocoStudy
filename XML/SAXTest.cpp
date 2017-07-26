@@ -1,11 +1,14 @@
 #include <Poco/SAX/ContentHandler.h>
 #include <Poco/SAX/SAXParser.h>
 #include <Poco/SAX/Attributes.h>
+#include <Poco/SAX/XMLReader.h>
+#include "Poco/String.h"
 #include <iostream>
 
 using Poco::XML::ContentHandler;
 using Poco::XML::SAXParser;
 using Poco::XML::XMLString;
+using Poco::XML::XMLReader;
 using namespace std;
 
 class MyContentHandler : public ContentHandler {
@@ -26,7 +29,7 @@ public:
                       const Poco::XML::Attributes &attrList) override {
         cout << "startElement()" << ", uri: " << uri << ", localName: " << localName << ", qname: " << qname << endl;
         for (int i = 0; i < attrList.getLength(); ++i) {
-            cout << "    " << ", attribute name: " << attrList.getQName(i) << ", value: " << attrList.getValue(i)
+            cout << "    " << ", attribute name: " << attrList.getLocalName(i) << ", value: " << attrList.getValue(i)
                  << endl;
         }
 
@@ -38,11 +41,16 @@ public:
     }
 
     void characters(const Poco::XML::XMLChar *ch, int start, int length) override {
-        cout << "characters()" << ", ch: " << ch << ", start: " << start << ", length: " << length << endl;
+        std::string ss(ch);
+        ss.resize(length);
+        ss.erase(0, start);
+        Poco::trimInPlace(ss);
+        if (ss.size() != 0 && ss != "\n")
+            cout << "characters()" << ", ch: " << ss << ", start: " << start << ", length: " << length << endl;
     }
 
     void ignorableWhitespace(const Poco::XML::XMLChar *ch, int start, int length) override {
-        cout << "ignorableWhitespace()" << ", ch: " << ch << ", start: " << start << ", length: " << length << endl;
+//        cout << "ignorableWhitespace()" << ", ch: " << ch << ", start: " << start << ", length: " << length << endl;
     }
 
     void processingInstruction(const XMLString &target, const XMLString &data) override {
@@ -66,6 +74,8 @@ public:
 int main(int argc, char **argv) {
     MyContentHandler handler;
     SAXParser parser;
+    parser.setFeature(XMLReader::FEATURE_NAMESPACES, true);
+    parser.setFeature(XMLReader::FEATURE_NAMESPACE_PREFIXES, true);
     parser.setContentHandler(&handler);
     try {
         parser.parse("../../XML/SAXTest.xml");
