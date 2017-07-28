@@ -29,6 +29,7 @@ add_subdirectory(XML)
 add_subdirectory(Configuration)
 add_subdirectory(LoggingConfiguration)
 add_subdirectory(Applications)
+add_subdirectory(Network)
 #add_subdirectory(Curl)
 
 set(SOURCE_FILES main.cpp)
