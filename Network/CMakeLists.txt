@@ -19,3 +19,15 @@ set(SOURCE_FILES ServerSocketTest.cpp)
 add_executable(ServerSocketTest ${SOURCE_FILES})
 target_link_libraries(ServerSocketTest PocoFoundation PocoNet)
 
+set(SOURCE_FILES DatagramSocketRecvTest.cpp)
+add_executable(DatagramSocketRecvTest ${SOURCE_FILES})
+target_link_libraries(DatagramSocketRecvTest PocoFoundation PocoNet)
+
+set(SOURCE_FILES DatagramSocketSendTest.cpp)
+add_executable(DatagramSocketSendTest ${SOURCE_FILES})
+target_link_libraries(DatagramSocketSendTest PocoFoundation PocoNet)
+
+set(SOURCE_FILES MulticastSocketRecvTest.cpp)
+add_executable(MulticastSocketRecvTest ${SOURCE_FILES})
+target_link_libraries(MulticastSocketRecvTest PocoFoundation PocoNet)
+
