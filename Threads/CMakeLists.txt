@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories("../../poco-1.7.8/Foundation/include")
 link_directories("../../poco-1.7.8/cmake-build-release/lib")
 
+find_package(Threads)
+
 set(SOURCE_FILES ThreadTest.cpp)
 add_executable(ThreadTest ${SOURCE_FILES})
 target_link_libraries(ThreadTest PocoFoundation)
@@ -48,7 +50,7 @@ target_link_libraries(SemaphoreTest PocoFoundation)
 
 set(SOURCE_FILES RWLockTest.cpp)
 add_executable(RWLockTest ${SOURCE_FILES})
-target_link_libraries(RWLockTest PocoFoundation)
+target_link_libraries(RWLockTest PocoFoundation  ${CMAKE_THREAD_LIBS_INIT})
 
 set(SOURCE_FILES TimerTest.cpp)
 add_executable(TimerTest ${SOURCE_FILES})
