@@ -31,6 +31,7 @@ add_subdirectory(LoggingConfiguration)
 add_subdirectory(Applications)
 add_subdirectory(Network)
 #add_subdirectory(Curl)
+add_subdirectory(JSON)
 
 set(SOURCE_FILES main.cpp)
 add_executable(PocoStudy ${SOURCE_FILES})
