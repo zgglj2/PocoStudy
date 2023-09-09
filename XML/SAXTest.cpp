@@ -13,20 +13,20 @@ using namespace std;
 
 class MyContentHandler : public ContentHandler {
 public:
-    void setDocumentLocator(const Poco::XML::Locator *loc) override {
+    void setDocumentLocator(const Poco::XML::Locator *loc)  {
         cout << "setDocumentLocator()" << endl;
     }
 
-    void startDocument() override {
+    void startDocument()  {
         cout << "startDocument()" << endl;
     }
 
-    void endDocument() override {
+    void endDocument()  {
         cout << "endDocument()" << endl;
     }
 
     void startElement(const XMLString &uri, const XMLString &localName, const XMLString &qname,
-                      const Poco::XML::Attributes &attrList) override {
+                      const Poco::XML::Attributes &attrList)  {
         cout << "startElement()" << ", uri: " << uri << ", localName: " << localName << ", qname: " << qname << endl;
         for (int i = 0; i < attrList.getLength(); ++i) {
             cout << "    " << ", attribute name: " << attrList.getLocalName(i) << ", value: " << attrList.getValue(i)
@@ -35,12 +35,12 @@ public:
 
     }
 
-    void endElement(const XMLString &uri, const XMLString &localName, const XMLString &qname) override {
+    void endElement(const XMLString &uri, const XMLString &localName, const XMLString &qname)  {
         cout << "endElement()" << ", uri: " << uri << ", localName: " << localName << ", qname: " << qname << endl;
 
     }
 
-    void characters(const Poco::XML::XMLChar *ch, int start, int length) override {
+    void characters(const Poco::XML::XMLChar *ch, int start, int length)  {
         std::string ss(ch);
         ss.resize(length);
         ss.erase(0, start);
@@ -49,23 +49,23 @@ public:
             cout << "characters()" << ", ch: " << ss << ", start: " << start << ", length: " << length << endl;
     }
 
-    void ignorableWhitespace(const Poco::XML::XMLChar *ch, int start, int length) override {
+    void ignorableWhitespace(const Poco::XML::XMLChar *ch, int start, int length)  {
 //        cout << "ignorableWhitespace()" << ", ch: " << ch << ", start: " << start << ", length: " << length << endl;
     }
 
-    void processingInstruction(const XMLString &target, const XMLString &data) override {
+    void processingInstruction(const XMLString &target, const XMLString &data)  {
         cout << "processingInstruction()" << ", target: " << target << ", data: " << data << endl;
     }
 
-    void startPrefixMapping(const XMLString &prefix, const XMLString &uri) override {
+    void startPrefixMapping(const XMLString &prefix, const XMLString &uri)  {
         cout << "startPrefixMapping()" << ", prefix: " << prefix << ", uri: " << uri << endl;
     }
 
-    void endPrefixMapping(const XMLString &prefix) override {
+    void endPrefixMapping(const XMLString &prefix)  {
         cout << "endPrefixMapping()" << ", prefix: " << prefix << endl;
     }
 
-    void skippedEntity(const XMLString &name) override {
+    void skippedEntity(const XMLString &name)  {
         cout << "skippedEntity()" << ", name: " << name << endl;
     }
 

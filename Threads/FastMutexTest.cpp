@@ -11,7 +11,7 @@ class Worker : public Runnable {
 public:
     Worker(FastMutex &_mtx) : _mtx(_mtx) {}
 
-    void run() override {
+    void run()  {
         _mtx.lock();
 //        _mtx.lock();
         cout << Poco::Thread::currentTid() << " get mutex!!" << endl;

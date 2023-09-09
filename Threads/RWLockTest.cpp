@@ -11,7 +11,7 @@ class Worker1 : public Runnable {
 public:
     Worker1(RWLock &_rwlock) : _rwlock(_rwlock) {}
 
-    void run() override {
+    void run()  {
         _rwlock.readLock();
         cout << Poco::Thread::currentTid() << " get readlock!!" << endl;
         Poco::Thread::sleep(1000);
@@ -25,7 +25,7 @@ class Worker2 : public Runnable {
 public:
     Worker2(RWLock &_rwlock) : _rwlock(_rwlock) {}
 
-    void run() override {
+    void run()  {
         _rwlock.writeLock();
         cout << Poco::Thread::currentTid() << " get writelock!!" << endl;
         Poco::Thread::sleep(2000);

@@ -15,7 +15,7 @@ class SampleTask : public Task {
 public:
     SampleTask(const string &name) : Task(name) {}
 
-    void runTask() override {
+    void runTask()  {
         for (int i = 0; i < 100; ++i) {
             setProgress((float) i / 100);
             if (sleep(100))

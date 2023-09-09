@@ -16,7 +16,7 @@ public:
         std::cout << "~PluginA()" << std::endl;
     }
 
-    std::string name() const override {
+    std::string name() const {
         return "PluginA";
     }
 
@@ -32,7 +32,7 @@ public:
         std::cout << "~PluginB()" << std::endl;
     }
 
-    std::string name() const override {
+    std::string name() const {
         return "PluginB";
     }
 

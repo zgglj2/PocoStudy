@@ -1,10 +1,7 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 2.8)
 project(StringAndFormatting)
 
-set(CMAKE_CXX_STANDARD 11)
-
-include_directories("../../poco-1.7.8/Foundation/include")
-link_directories("../../poco-1.7.8/cmake-build-release/lib")
+include(../CMakeDepend.txt)
 
 set(TRIM_SOURCE_FILES TrimTest.cpp)
 add_executable(TrimTest ${TRIM_SOURCE_FILES})

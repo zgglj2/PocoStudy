@@ -13,7 +13,7 @@ class Worker : public Runnable {
 public:
     Worker(Mutex &_mtx, Condition &_cond) : _mtx(_mtx), _cond(_cond) {}
 
-    void run() override {
+    void run() {
         _mtx.lock();
         _cond.wait(_mtx);
         cout << Poco::Thread::currentTid() << " get mutex!!" << endl;

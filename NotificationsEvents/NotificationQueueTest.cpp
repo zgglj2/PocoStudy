@@ -32,7 +32,7 @@ class Worker : public Runnable {
 public:
     Worker(NotificationQueue &_queue) : _queue(_queue) {}
 
-    void run() override {
+    void run() {
         cout << "test" << endl;
         AutoPtr<Notification> pNf;
         while (true) {

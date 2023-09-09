@@ -12,7 +12,7 @@ using namespace std;
 
 class Counter : public Runnable {
 public:
-    void run() override {
+    void run()  {
         static ThreadLocal<int> tls;
         static ThreadLocal<std::string> tls_str;
         for (*tls = 0; *tls < 10; ++(*tls)) {

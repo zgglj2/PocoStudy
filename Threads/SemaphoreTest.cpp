@@ -11,7 +11,7 @@ class Worker : public Runnable {
 public:
     Worker(Semaphore &_sema) : _sema(_sema) {}
 
-    void run() override {
+    void run()  {
         _sema.wait();
         cout << Poco::Thread::currentTid() << " get event1!!" << endl;
         _sema.wait();

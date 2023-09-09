@@ -13,7 +13,7 @@ public:
 int main(int argc, char **argv) {
     char* pStr = new char[100];
     std::cout << "pStr addr:" << std::hex << (void *)pStr << std::endl;
-    Poco::SharedPtr<char, Poco::ReferenceCounter, ArrayReleasePolicy<char>> p(pStr);
+    Poco::SharedPtr<char, Poco::ReferenceCounter, ArrayReleasePolicy<char> > p(pStr);
 
     return 0;
 }

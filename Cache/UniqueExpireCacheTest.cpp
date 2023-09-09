@@ -10,7 +10,7 @@ using Poco::Thread;
 using namespace std;
 
 int main(int argc, char **argv) {
-    UniqueExpireCache<int, ExpirationDecorator<string>> myCache;
+    UniqueExpireCache<int, ExpirationDecorator<string> > myCache;
 
     myCache.add(1, ExpirationDecorator<string>("test1", 500));
     myCache.add(3, ExpirationDecorator<string>("test2", 1500));

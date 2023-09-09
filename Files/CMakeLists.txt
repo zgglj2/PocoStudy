@@ -1,11 +1,7 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 2.8)
 project(Files)
 
-set(CMAKE_CXX_STANDARD 11)
-
-include_directories("../../poco-1.7.8/Foundation/include")
-link_directories("../../poco-1.7.8/cmake-build-release/lib")
-link_directories("../../poco-1.7.8/cmake-build-release/bin")
+include(../CMakeDepend.txt)
 
 set(SOURCE_FILES PathTest.cpp)
 add_executable(PathTest ${SOURCE_FILES})

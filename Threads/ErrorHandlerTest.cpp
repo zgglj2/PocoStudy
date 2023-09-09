@@ -26,7 +26,7 @@ public:
 
 class HelloRunnable : public Runnable {
 public:
-    void run() override {
+    void run() {
         throw Poco::ApplicationException("got you");
     }
 

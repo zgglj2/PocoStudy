@@ -14,7 +14,7 @@ class ActiveAdder : public ActiveDispatcher {
 public:
     ActiveAdder() : add(this, &ActiveAdder::AddImpl) {}
 
-    ActiveMethod<int, std::pair<int, int>, ActiveAdder, ActiveStarter<ActiveDispatcher>> add;
+    ActiveMethod<int, std::pair<int, int>, ActiveAdder, ActiveStarter<ActiveDispatcher> > add;
 
 private:
     int AddImpl(const std::pair<int, int>& args) {

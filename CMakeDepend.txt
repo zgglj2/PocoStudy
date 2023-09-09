@@ -1,0 +1,15 @@
+
+if(WIN32)
+    include_directories("../../poco-1.9.4/Foundation/include")
+    include_directories("../../poco-1.9.4/XML/include")
+    include_directories("../../poco-1.9.4/Net/include")
+    include_directories("../../poco-1.9.4/Util/include")
+    link_directories("../../poco-1.9.4/cmake-build-release/lib")
+else(WIN32)
+    include_directories("/usr/local/include/poco")
+    include_directories("/usr/local/include/poco/Util")
+    link_directories("/usr/local/lib")  
+endif(WIN32)
+
+
+

@@ -11,7 +11,7 @@ class Worker : public Runnable {
 public:
     Worker(Event &_evt) : _evt(_evt) {}
 
-    void run() override {
+    void run()  {
         _evt.wait();
         cout << Poco::Thread::currentTid() << " get event1!!" << endl;
         _evt.wait();

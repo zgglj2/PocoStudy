@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 2.8)
 project(TestLib)
 
-set(CMAKE_CXX_STANDARD 11)
+include(../CMakeDepend.txt)
 
 set(SOURCE_FILES library.cpp library.h)
 add_library(TestLib SHARED ${SOURCE_FILES})

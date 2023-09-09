@@ -16,7 +16,7 @@ int counter = 0;
 
 class Worker : public Runnable {
 public:
-    void run() override {
+    void run() {
         int fd = open("/tmp/flock", O_CREAT | O_RDWR);
         for (int i = 0; i < 100000; i++) {
             if ((flock(fd, LOCK_EX)) < 0) {
