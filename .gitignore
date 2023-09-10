@@ -26,3 +26,7 @@ compile_commands.json
 
 bin/
 lib/
+build/
+
+.scannerwork
+cppcheck_result.xml
