@@ -3,6 +3,7 @@
 #include <Poco/Process.h>
 #include <unistd.h>
 #include <iostream>
+#include "Poco/Exception.h"
 using Poco::TemporaryFile;
 
 int main(int argc, char** argv)

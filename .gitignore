@@ -30,3 +30,4 @@ build/
 
 .scannerwork
 cppcheck_result.xml
+main
